@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Penilaian Ancaman STRIDE-DREAD</title>
+  <!-- Menambahkan link Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="container mt-5">
+    <header class="mb-4 text-center">
+      <h1>Sistem Penilaian Ancaman STRIDE-DREAD</h1>
+    </header>
+    
+    <main>
+      <!-- Data Collection Module -->
+      <section id="data-collection" class="mb-5">
+        <h2 class="h4">Data Collection Module</h2>
+        <div class="alert alert-info" role="alert">
+          <strong>Catatan:</strong> Pilih kategori STRIDE terlebih dahulu sebelum mengisi form ancaman.
+        </div>
+        
+        <form id="threat-form" class="border p-4 rounded shadow-sm">
+          <div class="mb-3">
+            <label for="threat-name" class="form-label">Nama Ancaman:</label>
+            <input type="text" class="form-control" id="threat-name" readonly>
+          </div>
+          
+          <div class="mb-3">
+            <label for="stride-type" class="form-label">Kategori STRIDE:</label>
+            <select id="stride-type" class="form-select">
+              <option value="Spoofing">Spoofing</option>
+              <option value="Tampering">Tampering</option>
+              <option value="Repudiation">Repudiation</option>
+              <option value="Information Disclosure">Information Disclosure</option>
+              <option value="Denial of Service">Denial of Service</option>
+              <option value="Elevation of Privilege">Elevation of Privilege</option>
+            </select>
+          </div>
+          
+          <div class="mb-3">
+            <label for="dread-score" class="form-label">Skor DREAD (0-10):</label>
+            <input type="number" class="form-control" id="dread-score" min="0" max="10" required>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Tambahkan Ancaman</button>
+        </form>
+      </section>
+      
+      <!-- Visualization Dashboard -->
+      <section id="dashboard" class="mb-5">
+        <h2 class="h4">Visualization Dashboard</h2>
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <canvas id="threatChart"></canvas>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Mitigation Recommendation -->
+      <section id="mitigation">
+        <h2 class="h4">Mitigation Recommendation</h2>
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <div id="recommendation" class="alert alert-warning">Pilih kategori STRIDE untuk melihat rekomendasi mitigasi.</div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- Menambahkan link Bootstrap JS dan Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
