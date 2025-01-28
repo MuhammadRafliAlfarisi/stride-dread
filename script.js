@@ -1,5 +1,5 @@
-// Inisialisasi array threats
-const threats = [];
+// Inisialisasi array threats dengan data yang ada di localStorage (jika ada)
+const threats = JSON.parse(localStorage.getItem('threats')) || [];
 
 // Data Ancaman berdasarkan STRIDE
 const threatNames = {
@@ -48,6 +48,9 @@ document.getElementById('threat-form').addEventListener('submit', (e) => {
   
   // Tambahkan ancaman ke array
   threats.push({ name, type, dreadScore });
+  
+  // Simpan data ancaman ke localStorage
+  localStorage.setItem('threats', JSON.stringify(threats));
   
   // Update Dashboard & Recommendation
   updateChart();  // Update grafik berdasarkan data ancaman yang ditambahkan
